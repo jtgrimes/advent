@@ -1,0 +1,22 @@
+{
+    "name": "jtgrimes/advent",
+    "description": "Advent of Code Implementation",
+    "type": "project",
+    "require": {
+        "symfony/console": "^6.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jtgrimes\\Advent\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jtgrimes",
+            "email": "jtgrimes@gmail.com"
+        }
+    ]
+}
