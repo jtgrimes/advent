@@ -12,7 +12,11 @@ abstract class Day
     {
         $input = file_get_contents($this->inputDir."{$this->year}/day{$this->day}");
         return str_split($input);
+    }
 
+    public function getInputAsArrayOfLines()
+    {
+        return file($this->inputDir."{$this->year}/day{$this->day}");
     }
 
     public abstract function part1();
