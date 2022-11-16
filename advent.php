@@ -14,7 +14,7 @@ if (isset($argc)) {
     echo "Year: $year, Day: $day, Part: $part".PHP_EOL;
     $class = new ('Jtgrimes\Advent\y'.$year.'\Day'.$day);
 
-    echo ($day === 1 ? $class->part1() : $class->part2());
+    echo ($part == 1 ? $class->part1() : $class->part2());
 } else {
     echo "invalid args\n";
 }

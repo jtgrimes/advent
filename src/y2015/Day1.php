@@ -2,32 +2,32 @@
 
 namespace Jtgrimes\Advent\y2015;
 
-class Day1
+use Jtgrimes\Advent\Day;
+
+class Day1 extends Day
 {
+    protected $year = 2015;
+    protected $day = 1;
+
     public function part1()
     {
-        $inputDir = 'd:\code\jtgrimes\advent\input\\';
-        $input = file_get_contents($inputDir.'2015/day1');
-        $characters = str_split($input);
-        $counter = 0;
+        $characters = $this->getInputAsArrayOfCharacters();
+        $floor = 0;
         foreach ($characters as $char) {
-            $counter += ($char === '(' ? 1 : -1);
+            $floor += ($char === '(' ? 1 : -1);
         }
-        return $counter;
+        return $floor;
     }
 
     public function part2()
     {
-        $inputDir = 'd:\code\jtgrimes\advent\input\\';
-        $input = file_get_contents($inputDir.'2015/day1');
-        $characters = str_split($input);
-        $counter = 0;
+        $characters = $this->getInputAsArrayOfCharacters();
+        $floor = 0;
         foreach ($characters as $i => $char) {
-            $counter += ($char === '(' ? 1 : -1);
-            if ($counter < 0) {
+            $floor += ($char === '(' ? 1 : -1);
+            if ($floor < 0) {
                 return $i + 1; // because the first char isn't the 0th
             }
         }
-        return $counter;
     }
 }
