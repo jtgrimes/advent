@@ -3,7 +3,8 @@
     "description": "Advent of Code Implementation",
     "type": "project",
     "require": {
-        "symfony/console": "^6.1"
+        "symfony/console": "^6.1",
+        "illuminate/collections": "^9.40"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"

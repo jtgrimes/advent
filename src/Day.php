@@ -2,6 +2,8 @@
 
 namespace Jtgrimes\Advent;
 
+use Illuminate\Support\Collection;
+
 abstract class Day
 {
     private $inputDir = 'd:\code\jtgrimes\advent\input\\';
@@ -17,6 +19,11 @@ abstract class Day
     public function getInputAsArrayOfLines()
     {
         return file($this->inputDir."{$this->year}/day{$this->day}");
+    }
+
+    public function getInputAsCollectionOfLines()
+    {
+        return new Collection($this->getInputAsArrayOfLines());
     }
 
     public abstract function part1();
