@@ -3,7 +3,7 @@
 namespace Jtgrimes\Advent\y2015;
 
 use Jtgrimes\Advent\Day;
-use Jtgrimes\Advent\y2015\Day14\Reindeer;
+use Jtgrimes\Advent\y2015\Support\Reindeer;
 
 class Day14 extends Day
 {

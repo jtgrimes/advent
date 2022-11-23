@@ -3,7 +3,7 @@
 namespace Jtgrimes\Advent\y2015;
 
 use Jtgrimes\Advent\Day;
-use Jtgrimes\Advent\y2015\Day7\Circuit;
+use Jtgrimes\Advent\y2015\Support\Circuit;
 
 class Day7 extends Day
 {

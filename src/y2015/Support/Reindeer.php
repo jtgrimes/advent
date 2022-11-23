@@ -1,6 +1,6 @@
 <?php
 
-namespace Jtgrimes\Advent\y2015\Day14;
+namespace Jtgrimes\Advent\y2015\Support;
 
 class Reindeer
 {

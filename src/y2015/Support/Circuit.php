@@ -1,6 +1,6 @@
 <?php
 
-namespace Jtgrimes\Advent\y2015\Day7;
+namespace Jtgrimes\Advent\y2015\Support;
 
 use Illuminate\Support\Collection;
 
