@@ -3,7 +3,7 @@
 namespace Jtgrimes\Advent\y2015;
 
 use Jtgrimes\Advent\Day;
-use Jtgrimes\Advent\y2015\Support\Permutator;
+use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day13 extends Day
 {
@@ -16,7 +16,7 @@ class Day13 extends Day
     {
         $maxScore = 0;
         $this->readInputData();
-        $possibilities = (new Permutator())->permutations($this->guests);
+        $possibilities = (new Combinator($this->guests))->permutations();
         foreach ($possibilities as $option) {
             $score = $this->calculateScore($option);
             if ($score > $maxScore) {
@@ -32,7 +32,7 @@ class Day13 extends Day
         $maxScore = 0;
         $this->readInputData();
         $this->addMeToLists();
-        $possibilities = (new Permutator())->permutations($this->guests);
+        $possibilities = (new Combinator($this->guests))->permutations();
         foreach ($possibilities as $option) {
             $score = $this->calculateScore($option);
             if ($score > $maxScore) {

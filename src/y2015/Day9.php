@@ -3,7 +3,7 @@
 namespace Jtgrimes\Advent\y2015;
 
 use Jtgrimes\Advent\Day;
-use Jtgrimes\Advent\y2015\Support\Permutator;
+use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day9 extends Day
 {
@@ -24,7 +24,6 @@ class Day9 extends Day
 
     private function calculateDistances()
     {
-        $permuter = new Permutator();
         $legs = [];
         $cities = [];
         $lines = $this->getInputAsArrayOfLines();
@@ -42,7 +41,7 @@ class Day9 extends Day
             }
         }
         print_r($cities);
-        $possibleRoutes = $permuter->permutations($cities);
+        $possibleRoutes = (new Combinator($cities))->permutations();
         $distances = [];
         foreach ($possibleRoutes as $route) {
             $distance = 0;
