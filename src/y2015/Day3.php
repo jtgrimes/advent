@@ -6,9 +6,6 @@ use Jtgrimes\Advent\Day;
 
 class Day3 extends Day
 {
-    protected $year = 2015;
-    protected $day = 3;
-
     public function part1()
     {
         $moves = $this->getInputAsArrayOfCharacters();

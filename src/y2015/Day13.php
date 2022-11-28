@@ -7,8 +7,6 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day13 extends Day
 {
-    protected $year = 2015;
-    protected $day = 13;
     protected $guests = [];
     protected $scores = [];
 

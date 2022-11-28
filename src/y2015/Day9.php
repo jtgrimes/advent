@@ -7,9 +7,6 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day9 extends Day
 {
-    protected $year = 2015;
-    protected $day = 9;
-
     public function part1()
     {
         $distances = $this->calculateDistances();

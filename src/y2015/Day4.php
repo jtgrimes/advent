@@ -6,8 +6,6 @@ use Jtgrimes\Advent\Day;
 
 class Day4 extends Day
 {
-    protected $year = 2015;
-    protected $day = 4;
     protected $input = 'bgvyzdsv';
 
     public function part1()

@@ -7,9 +7,6 @@ use Jtgrimes\Advent\y2015\Support\AuntSue;
 
 class Day16 extends Day
 {
-    protected $year = 2015;
-    protected $day = 16;
-
     protected $aunts;
 
     public function part1()

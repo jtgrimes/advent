@@ -7,9 +7,6 @@ use Jtgrimes\Advent\y2015\Support\Reindeer;
 
 class Day14 extends Day
 {
-    protected $year = 2015;
-    protected $day = 14;
-
     public function part1()
     {
         $reindeer = $this->getReindeer();

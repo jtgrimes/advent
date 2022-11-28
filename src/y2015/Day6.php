@@ -6,9 +6,6 @@ use Jtgrimes\Advent\Day;
 
 class Day6 extends Day
 {
-    protected $year = 2015;
-    protected $day = 6;
-
     public function part1()
     {
         $lights = $this->setUpLights();

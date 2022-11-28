@@ -8,9 +8,6 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day15 extends Day
 {
-    protected $year = 2015;
-    protected $day = 15;
-
     public function part1()
     {
         // tried doing combinatorics & ran out of memory. This way, we only have to keep one combination in memory at a time

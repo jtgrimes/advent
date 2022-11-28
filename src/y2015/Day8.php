@@ -6,9 +6,6 @@ use Jtgrimes\Advent\Day;
 
 class Day8 extends Day
 {
-    protected $year = 2015;
-    protected $day = 8;
-
     public function part1()
     {
         $lines = $this->getInputAsArrayOfLines();
