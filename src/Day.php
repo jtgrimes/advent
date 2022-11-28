@@ -28,18 +28,35 @@ abstract class Day
 
     public function getInputAsArrayOfCharacters()
     {
-        $input = file_get_contents($this->inputDir."{$this->getYear()}/day{$this->getDay()}");
+        $input = file_get_contents($this->inputFileName());
         return str_split($input);
     }
 
     public function getInputAsArrayOfLines()
     {
-        return file($this->inputDir."{$this->getYear()}/day{$this->getDay()}");
+        return file($this->inputFileName());
     }
 
     public function getInputAsCollectionOfLines()
     {
         return new Collection($this->getInputAsArrayOfLines());
+    }
+
+    public function getInputAsJSONArray()
+    {
+        $input = file_get_contents($this->inputFileName());
+        return json_decode($input, true);
+    }
+
+    public function getInputAsJSONObject()
+    {
+        $input = file_get_contents($this->inputFileName());
+        return json_decode($input, false);
+    }
+
+    private function inputFileName()
+    {
+        return $this->inputDir."{$this->getYear()}/day{$this->getDay()}";
     }
 
     public abstract function part1();
