@@ -16,7 +16,7 @@ class Combinator
 
     public function combinations($choose)
     {
-        return $this->calculateCombinations($this->array, $choose);
+        return $this->calculateCombinations($choose);
     }
 
     private function calculatePermutations(array $array, $count)
@@ -40,14 +40,14 @@ class Combinator
     }
 
 
-    private function calculateCombinations(array $array, $count)
+    private function calculateCombinations(int $count)
     {
         if ($count == 0) {
             return [];
         }
         $result = [];
-        foreach ($array as $i=>$item) {
-            $inner = $this->calculateCombinations($array, $count-1);
+        foreach ($this->array as $i=>$item) {
+            $inner = $this->calculateCombinations($count-1);
             if (empty($inner)) {
                 $result[] = [$item];
             }
