@@ -26,6 +26,11 @@ abstract class Day
         }
     }
 
+    public function getInputAsString()
+    {
+        return trim(file_get_contents($this->inputFileName()));
+    }
+
     public function getInputAsArrayOfCharacters()
     {
         $input = file_get_contents($this->inputFileName());
