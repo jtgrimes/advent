@@ -7,9 +7,8 @@ class Day3 extends \Jtgrimes\Advent\Day
 
     public function part1()
     {
-        $score = 0;
-        $rucks = $this->getInputAsArrayOfLines();
-        foreach ($rucks as $ruck) {
+        $rucks = $this->getInputAsCollectionOfLines();
+        return $rucks->map(function ($ruck) {
             $items = str_split(trim($ruck));
             $secondHalf = array_splice($items, count($items) / 2, count($items), []);
             // items now only contains the first half ... rename because I'll confuse myself otherwise
@@ -17,14 +16,13 @@ class Day3 extends \Jtgrimes\Advent\Day
             $duplicates = array_intersect($firstHalf, $secondHalf);
             $duplicate = array_values($duplicates)[0];
             echo ("$duplicate: ".$this->toScore($duplicate)."\n");
-            $score += $this->toScore($duplicate);
-        }
-        return $score;
+            return $this->toScore($duplicate);
+        })->sum();
     }
 
     public function part2()
     {
-        $rucks = collect($this->getInputAsArrayOfLines());
+        $rucks = $this->getInputAsCollectionOfLines();
         return $rucks->chunk(3)->map(function ($group){
             $first = str_split(trim($group->shift()));
             $second = str_split(trim($group->shift()));
