@@ -9,7 +9,6 @@ class Day9 extends \Jtgrimes\Advent\Day
 {
     public function part1()
     {
-        // 1012 is too low
         $snake = new PlankSnake();
         $moves = $this->buildMoves();
         foreach ($moves as $move) {
@@ -23,7 +22,15 @@ class Day9 extends \Jtgrimes\Advent\Day
 
     public function part2()
     {
-        // TODO: Implement part2() method.
+        $snake = new PlankSnake(9);
+        $moves = $this->buildMoves();
+        foreach ($moves as $move) {
+            for ($i = 1; $i <= $move['distance']; $i ++) {
+                $snake->move($move['direction']);
+                $tailVisited[$snake->tailX()][$snake->tailY()] = 1;
+            }
+        }
+        return $this->gridSum($tailVisited);
     }
 
     private function buildMoves()

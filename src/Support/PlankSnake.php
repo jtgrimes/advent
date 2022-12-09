@@ -4,46 +4,48 @@ namespace Jtgrimes\Advent\Support;
 
 class PlankSnake
 {
-    private Point $head;
-    private Point $tail;
+    private $segments = [];
 
-    public function __construct()
+    public function __construct(private $length = 1)
     {
-        $this->head = new Point();
-        $this->tail = new Point();
+        foreach (range(0,$length) as $position)
+        $this->segments[$position] = new Point();
     }
 
     public function tailX()
     {
-        return $this->tail->x;
+        return $this->segments[$this->length]->x;
     }
 
     public function tailY()
     {
-        return $this->tail->y;
+        return $this->segments[$this->length]->y;
     }
 
-    public function dump()
-    {
-        echo("HEAD: {$this->head->x}, {$this->head->y}    TAIL: {$this->tail->x}, {$this->tail->y}\n");
-    }
     public function move($direction)
     {
-        $this->head->move($direction, 1);
-        if ($this->head->equals($this->tail) || $this->head->isAdjacentTo($this->tail)) {
-            // we don't need to move the butt
-            return;
+        foreach ($this->segments as $i => $segment) {
+            if ($i == 0) {
+                // this is the head - just move it
+                $this->segments[0]->move($direction, 1);
+            } else {
+                $prior = $this->segments[$i - 1];
+                if ($prior->equals($segment) || $prior->isAdjacentTo($segment)) {
+                    // we don't need to move anything else
+                    return;
+                }
+                if ($prior->x == $segment->x) {
+                    $segment->move($prior->y > $segment->y ? "R" : 'L', 1);
+                    continue;
+                }
+                if ($prior->y == $segment->y) {
+                    $segment->move($prior->x > $segment->x ? "U" : 'D', 1);
+                    continue;
+                }
+                // not moving horizontally or vertically - guess it's diagonal
+                $segment->move($prior->x > $segment->x ? "U" : 'D', 1);
+                $segment->move($prior->y > $segment->y ? "R" : 'L', 1);
+            }
         }
-        if ($this->head->x == $this->tail->x) {
-            $this->tail->y = $this->tail->y + ($this->head->y > $this->tail->y ? 1 : -1);
-            return;
-        }
-        if ($this->head->y == $this->tail->y) {
-            $this->tail->x = $this->tail->x + ($this->head->x > $this->tail->x ? 1 : -1);
-            return;
-        }
-        // not moving horizontally or vertically - guess it's diagonal
-        $this->tail->x = $this->tail->x + ($this->head->x > $this->tail->x ? 1 : -1);
-        $this->tail->y = $this->tail->y + ($this->head->y > $this->tail->y ? 1 : -1);
     }
 }
