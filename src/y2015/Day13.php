@@ -7,6 +7,8 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day13 extends Day
 {
+    public $part1Solution = '664';
+    public $part2Solution = '640';
     protected $guests = [];
     protected $scores = [];
 

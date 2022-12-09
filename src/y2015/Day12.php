@@ -7,6 +7,9 @@ use Jtgrimes\Advent\Day;
 class Day12 extends Day
 {
 
+    public $part1Solution = '156366';
+    public $part2Solution = '96852';
+
     public function part1()
     {
         $input = $this->getInputAsJSONArray();

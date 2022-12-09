@@ -8,6 +8,8 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day15 extends Day
 {
+    public $part1Solution = '13882464';
+    public $part2Solution = '11171160';
     public function part1()
     {
         // tried doing combinatorics & ran out of memory. This way, we only have to keep one combination in memory at a time
