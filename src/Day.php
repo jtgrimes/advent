@@ -8,6 +8,9 @@ abstract class Day
 {
     private $inputDir = 'd:\code\jtgrimes\advent\input\\';
 
+    public $part1Solution;
+    public $part2Solution;
+
     public function getYear()
     {
         return $this->getMatchFromClassName('/Jtgrimes\\\\Advent\\\\y(\d*)\\\\/');

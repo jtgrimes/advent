@@ -7,6 +7,8 @@ use Jtgrimes\Advent\y2015\Support\Combinator;
 
 class Day9 extends Day
 {
+    public $part1Solution = '207';
+    public $part2Solution = '804';
     public function part1()
     {
         $distances = $this->calculateDistances();
@@ -37,7 +39,6 @@ class Day9 extends Day
                 $cities[] = $parts[2];
             }
         }
-        print_r($cities);
         $possibleRoutes = (new Combinator($cities))->permutations();
         $distances = [];
         foreach ($possibleRoutes as $route) {

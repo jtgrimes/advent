@@ -17,8 +17,6 @@ class Day4 extends \Jtgrimes\Advent\Day
             $this->markBoards($boards, $draw);
             $winner = $this->findWinner($boards);
             if ($winner) {
-                echo ("Board found on draw $draw\n");
-                print_r($winner);
                 return $this->computeScore($winner) * $draw;
             }
         }
@@ -39,8 +37,6 @@ class Day4 extends \Jtgrimes\Advent\Day
             $this->markBoards($lastBoard, $draw);
             $winner = $this->findWinner($lastBoard);
             if ($winner) {
-                echo ("Board found on draw $draw\n");
-                print_r($winner);
                 return $this->computeScore($winner) * $draw;
             }
 

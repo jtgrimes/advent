@@ -35,8 +35,6 @@ class Day3 extends \Jtgrimes\Advent\Day
             $gamma .= (int)($count > $readings->count() / 2);
             $epsilon .= (int)(! $gamma[$position]);
         }
-        echo ("Gamma: $gamma\n");
-        echo ("Epsilon: $epsilon\n");
         return $this->bin2dec($gamma) * $this->bin2dec($epsilon);
     }
 

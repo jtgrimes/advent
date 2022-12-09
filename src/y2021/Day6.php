@@ -20,9 +20,7 @@ class Day6 extends \Jtgrimes\Advent\Day
     private function breedFish($days)
     {
         $fish = explode(',', trim($this->getInputAsString()));
-        echo ("Starting: ".count($fish)."\n");
         $fishAtDay = array_count_values($fish);
-        echo ("Starting2: ".array_sum($fishAtDay)."\n");
         foreach (range(1,$days) as $days) {
             $newFishAtDay = array_fill(0, 9, 0);
             foreach ($fishAtDay as $day => $count) {

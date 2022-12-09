@@ -6,6 +6,9 @@ use Jtgrimes\Advent\Day;
 
 class Day8 extends Day
 {
+    public $part1Solution = '1350';
+    public $part2Solution = '2085';
+
     public function part1()
     {
         $lines = $this->getInputAsArrayOfLines();
@@ -16,7 +19,6 @@ class Day8 extends Day
             $reduce = $this->reduce($original);
             $strlen += strlen($original);
             $altlen += strlen($reduce);
-            echo "Line $i: $original, $reduce ... $strlen / $altlen \n";
         }
         return $strlen-$altlen;
     }
@@ -31,7 +33,6 @@ class Day8 extends Day
             $encoded = $this->encode($original);
             $strlen += strlen($original);
             $altlen += (strlen($encoded) + 2); // two chars for the start/end quotes
-            echo "Line $i: $original, $encoded ... $strlen / $altlen \n";
         }
         return $altlen - $strlen;
     }

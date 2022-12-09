@@ -6,6 +6,9 @@ use Jtgrimes\Advent\Day;
 
 class Day5 extends Day
 {
+    public $part1Solution = '255';
+    public $part2Solution = '55';
+
     public function part1()
     {
         return $this->loopOverStrings('isNice');

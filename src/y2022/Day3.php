@@ -15,7 +15,6 @@ class Day3 extends \Jtgrimes\Advent\Day
             $firstHalf = $items;
             $duplicates = array_intersect($firstHalf, $secondHalf);
             $duplicate = array_values($duplicates)[0];
-            echo ("$duplicate: ".$this->toScore($duplicate)."\n");
             return $this->toScore($duplicate);
         })->sum();
     }
@@ -29,7 +28,6 @@ class Day3 extends \Jtgrimes\Advent\Day
             $third = str_split(trim($group->shift()));
             $duplicates = array_intersect($first, $second, $third);
             $duplicate = array_values($duplicates)[0];
-            echo ("$duplicate: ".$this->toScore($duplicate)."\n");
             return $this->toScore($duplicate);
         })->sum();
     }

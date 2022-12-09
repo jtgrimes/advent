@@ -7,6 +7,9 @@ use Jtgrimes\Advent\y2015\Support\Circuit;
 
 class Day7 extends Day
 {
+    public $part1Solution = '956';
+    public $part2Solution = '40149';
+
     public function part1()
     {
         $lines = $this->getInputAsCollectionOfLines();

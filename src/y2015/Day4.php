@@ -8,6 +8,9 @@ class Day4 extends Day
 {
     protected $input = 'bgvyzdsv';
 
+    public $part1Solution = '254575';
+    public $part2Solution = '1038736';
+
     public function part1()
     {
         return $this->findHashStartingWith('00000');
