@@ -59,6 +59,17 @@ abstract class Day
         return json_decode($input, false);
     }
 
+    public function getInputAsCharacterGrid()
+    {
+        $lines = $this->getInputAsArrayOfLines();
+        foreach ($lines as $line) {
+            if (! empty($line)) {
+                $grid[] = str_split(trim($line));
+            }
+        }
+        return $grid;
+    }
+
     private function inputFileName()
     {
         return $this->inputDir."{$this->getYear()}/day{$this->getDay()}";
