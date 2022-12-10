@@ -3,6 +3,7 @@
 namespace Jtgrimes\Advent\y2015;
 
 use Jtgrimes\Advent\Day;
+use Jtgrimes\Advent\Support\StringUtility;
 
 class Day5 extends Day
 {
@@ -11,25 +12,18 @@ class Day5 extends Day
 
     public function part1()
     {
-        return $this->loopOverStrings('isNice');
+        return StringUtility::countMatchingStrings($this->getInputAsArrayOfLines(), function ($string) {
+            return $this->isNice($string);
+        });
     }
 
     public function part2()
     {
-        return $this->loopOverStrings('day2');
+        return StringUtility::countMatchingStrings($this->getInputAsArrayOfLines(), function ($string) {
+            return $this->day2($string);
+        });
     }
 
-    private function loopOverStrings($testFunction)
-    {
-        $counter = 0;
-        $lines = $this->getInputAsArrayOfLines();
-        foreach ($lines as $line) {
-            if ($this->$testFunction($line)) {
-                $counter++;
-            }
-        }
-        return $counter;
-    }
 
     private function isNice(mixed $line)
     {
