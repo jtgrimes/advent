@@ -5,6 +5,9 @@ namespace Jtgrimes\Advent\y2021;
 class Day6 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '352872';
+    public $part2Solution = '1604361182149';
+
     public function part1()
     {
         $fish = $this->breedFish(80);

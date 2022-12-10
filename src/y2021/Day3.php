@@ -8,6 +8,9 @@ use Illuminate\Support\Str;
 class Day3 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '3969000';
+    public $part2Solution = '4267809';
+
     public function part1()
     {
         $readings = $this->getInputAsCollectionOfLines();

@@ -8,6 +8,8 @@ use Jtgrimes\Advent\Day;
 class Day6 extends Day
 {
 
+    public $part1Solution = '1816';
+    public $part2Solution = '2625';
     public function part1()
     {
         $input = $this->getInputAsString();

@@ -5,6 +5,9 @@ namespace Jtgrimes\Advent\y2022;
 class Day3 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '7990';
+    public $part2Solution = '2602';
+
     public function part1()
     {
         $rucks = $this->getInputAsCollectionOfLines();

@@ -5,6 +5,9 @@ namespace Jtgrimes\Advent\y2021;
 class Day7 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '352331';
+    public $part2Solution = '99266250';
+
     private $cachedSums = [];
 
     public function part1()

@@ -4,7 +4,8 @@ namespace Jtgrimes\Advent\y2021;
 
 class Day1 extends \Jtgrimes\Advent\Day
 {
-
+    public $part1Solution = '1502';
+    public $part2Solution = '1538';
     public function part1()
     {
         $lines = $this->getInputAsArrayOfLines();

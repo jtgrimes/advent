@@ -8,6 +8,9 @@ use Jtgrimes\Advent\y2022\Day7\Directory;
 class Day7 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '1423358';
+    public $part2Solution = '545729';
+
     public function part1()
     {
         $tree = $this->buildTree();

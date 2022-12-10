@@ -3,10 +3,12 @@
 namespace Jtgrimes\Advent\y2022;
 
 use Jtgrimes\Advent\Support\PlankSnake;
-use Jtgrimes\Advent\Support\Point;
 
 class Day9 extends \Jtgrimes\Advent\Day
 {
+    public $part1Solution = '6337';
+    public $part2Solution = '2455';
+
     public function part1()
     {
         $snake = new PlankSnake();

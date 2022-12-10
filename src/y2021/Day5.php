@@ -4,6 +4,8 @@ namespace Jtgrimes\Advent\y2021;
 
 class Day5 extends \Jtgrimes\Advent\Day
 {
+    public $part1Solution = '8622';
+    public $part2Solution = '22037';
 
     public function part1()
     {

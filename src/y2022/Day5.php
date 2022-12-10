@@ -5,6 +5,8 @@ namespace Jtgrimes\Advent\y2022;
 class Day5 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = 'VPCDMSLWJ';
+    public $part2Solution = 'TPWCGNCCG';
     public function part1()
     {
         $stacks = $this->populateStacks();

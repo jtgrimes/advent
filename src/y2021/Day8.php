@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 
 class Day8 extends \Jtgrimes\Advent\Day
 {
+    public $part1Solution = '539';
+    public $part2Solution = '1084606';
+
     private $circuitsToDigits = [
         'cf' => 1,
         'acf' => 7,

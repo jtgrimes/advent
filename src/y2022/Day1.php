@@ -5,6 +5,9 @@ namespace Jtgrimes\Advent\y2022;
 class Day1 extends \Jtgrimes\Advent\Day
 {
 
+    public $part1Solution = '69883';
+    public $part2Solution = '207576';
+
     public function part1()
     {
         $elves = $this->parseInputData();

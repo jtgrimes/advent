@@ -4,6 +4,9 @@ namespace Jtgrimes\Advent\y2022;
 
 class Day8 extends \Jtgrimes\Advent\Day
 {
+    public $part1Solution = '1688';
+    public $part2Solution = '410400';
+
     private $forest;
     public function part1()
     {
