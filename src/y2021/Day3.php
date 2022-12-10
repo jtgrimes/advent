@@ -10,13 +10,13 @@ class Day3 extends \Jtgrimes\Advent\Day
 
     public function part1()
     {
-        $readings = $this->getInputAsCollectionOfLines()->map(function ($item) { return trim($item);});
+        $readings = $this->getInputAsCollectionOfLines();
         return $this->getPowerConsumption($readings);
      }
 
     public function part2()
     {
-        $readings = $this->getInputAsCollectionOfLines()->map(function ($item) { return trim($item);});
+        $readings = $this->getInputAsCollectionOfLines();
         // since we're updating $readings in the function, call the fn with a copy.
         $generator = $this->getCollectionRating(collect($readings->toArray()), true);
         $scrubber = $this->getCollectionRating($readings, false);

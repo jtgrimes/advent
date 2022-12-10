@@ -9,7 +9,7 @@ class Day3 extends \Jtgrimes\Advent\Day
     {
         $rucks = $this->getInputAsCollectionOfLines();
         return $rucks->map(function ($ruck) {
-            $items = str_split(trim($ruck));
+            $items = str_split($ruck);
             $secondHalf = array_splice($items, count($items) / 2, count($items), []);
             // items now only contains the first half ... rename because I'll confuse myself otherwise
             $firstHalf = $items;
@@ -23,9 +23,9 @@ class Day3 extends \Jtgrimes\Advent\Day
     {
         $rucks = $this->getInputAsCollectionOfLines();
         return $rucks->chunk(3)->map(function ($group){
-            $first = str_split(trim($group->shift()));
-            $second = str_split(trim($group->shift()));
-            $third = str_split(trim($group->shift()));
+            $first = str_split($group->shift());
+            $second = str_split($group->shift());
+            $third = str_split($group->shift());
             $duplicates = array_intersect($first, $second, $third);
             $duplicate = array_values($duplicates)[0];
             return $this->toScore($duplicate);

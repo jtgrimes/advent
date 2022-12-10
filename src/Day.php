@@ -45,9 +45,14 @@ abstract class Day
         return file($this->inputFileName());
     }
 
-    public function getInputAsCollectionOfLines()
+    public function getInputAsCollectionOfLines() : Collection
     {
-        return new Collection($this->getInputAsArrayOfLines());
+        return (new Collection($this->getInputAsArrayOfLines()))
+            ->map(function ($line) {
+                return trim($line);
+            })->reject(function ($line){
+                return empty($line);
+            });
     }
 
     public function getInputAsJSONArray()

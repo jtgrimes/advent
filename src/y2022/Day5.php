@@ -30,7 +30,7 @@ class Day5 extends \Jtgrimes\Advent\Day
         $lines = $this->getInputAsCollectionOfLines();
         // find the first blank line:
         $blank = $lines->search(function ($item) {
-            return empty(trim($item));
+            return empty($item);
         });
         $stackInput = $lines->take($blank); // get a collection with just the stack data.
         // flip it, so the numbers are at the top, then the "bottom" row. Cause reasons.
@@ -62,7 +62,7 @@ class Day5 extends \Jtgrimes\Advent\Day
         $lines = $this->getInputAsCollectionOfLines();
         // find the first blank line:
         $blank = $lines->search(function ($item) {
-            return empty(trim($item));
+            return empty($item);
         });
         $moves = $lines->slice($blank+1); // throw out everything before the blank line
         return $moves->map(function ($line) {
