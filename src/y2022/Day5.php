@@ -27,10 +27,10 @@ class Day5 extends \Jtgrimes\Advent\Day
 
     private function populateStacks()
     {
-        $lines = $this->getInputAsCollectionOfLines();
+        $lines = collect($this->getInputAsArrayOfLines());
         // find the first blank line:
         $blank = $lines->search(function ($item) {
-            return empty($item);
+            return empty(trim($item));
         });
         $stackInput = $lines->take($blank); // get a collection with just the stack data.
         // flip it, so the numbers are at the top, then the "bottom" row. Cause reasons.
@@ -59,10 +59,10 @@ class Day5 extends \Jtgrimes\Advent\Day
 
     private function getMoveList()
     {
-        $lines = $this->getInputAsCollectionOfLines();
+        $lines = collect($this->getInputAsArrayOfLines());
         // find the first blank line:
         $blank = $lines->search(function ($item) {
-            return empty($item);
+            return empty(trim($item));
         });
         $moves = $lines->slice($blank+1); // throw out everything before the blank line
         return $moves->map(function ($line) {
