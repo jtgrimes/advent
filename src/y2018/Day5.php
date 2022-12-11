@@ -8,6 +8,7 @@ class Day5 extends \Jtgrimes\Advent\Day
 {
     public $part1Solution = '11590';
     public $part2Solution = '4504';
+
     public function part1()
     {
         $polymer = $this->getInputAsArrayOfCharacters();
@@ -28,8 +29,6 @@ class Day5 extends \Jtgrimes\Advent\Day
 
     private function reducePolymer(array $polymer)
     {
-        // 21512 is too high
-        // 11592 is too high
         $i = 0;
         $match = ord('a') - ord('A'); // 32 characters between upper & lower case
         while ($i < count($polymer) - 1) {
