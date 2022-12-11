@@ -36,7 +36,7 @@ abstract class Day
 
     public function getInputAsArrayOfCharacters()
     {
-        $input = file_get_contents($this->inputFileName());
+        $input = trim(file_get_contents($this->inputFileName()));
         return str_split($input);
     }
 
