@@ -16,7 +16,6 @@ class Day10 extends \Jtgrimes\Advent\Day
         $strengths = $this->calculateStrengthsThru(max($calculateStrengthAt), $instructions);
         $cumulative = 0;
         foreach ($calculateStrengthAt as $time) {
-            echo ("Time: $time, Strength: {$strengths[$time]}\n");
             $cumulative += $time * $strengths[$time];
         }
         return $cumulative;
@@ -26,7 +25,6 @@ class Day10 extends \Jtgrimes\Advent\Day
     {
         $instructions = $this->getInputAsCollectionOfLines();
         $strengths = $this->calculateStrengthsThru(240, $instructions);
-        var_dump($strengths);
         $lit = [];
         foreach (range(0,240) as $cycle) {
             if (abs($strengths[$cycle + 1] - ($cycle % 40)) <=1) { // within 1 pixel either way
