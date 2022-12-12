@@ -2,6 +2,8 @@
 
 namespace Jtgrimes\Advent\y2015\Support;
 
+use Jtgrimes\Advent\Support\RegexUtility;
+
 class AuntSue
 {
     public $id;
@@ -25,9 +27,7 @@ class AuntSue
 
     public static function fromInput($line)
     {
-        $matches = [];
-        preg_match('/Sue (\d*)/', $line, $matches);
-        $id = $matches[1];
+        $id = RegexUtility::firstMatch('/Sue (\d*)/', $line);
         $values['id'] = $id;
         $updatedLine = str_replace("Sue $id: ", '', $line );
         $parts = explode(', ', $updatedLine);

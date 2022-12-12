@@ -5,6 +5,8 @@ namespace Jtgrimes\Advent\y2018;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Jtgrimes\Advent\Support\RegexUtility;
+
 class Day4 extends \Jtgrimes\Advent\Day
 {
     public $part1Solution = '38813';
@@ -52,21 +54,15 @@ class Day4 extends \Jtgrimes\Advent\Day
     {
         $events = $this->getInputAsCollectionOfLines()
             ->map(function ($line) {
-                $matches = [];
-                preg_match('/\[(.+?)\]/', $line, $matches);
                 return [
-                    'time' => $matches[1],
+                    'time' => RegexUtility::firstMatch('/\[(.+?)\]/', $line),
                     'action' => substr($line, strpos($line, ']') + 2),
                 ];
             })->values()->sortBy('time');
         // have to get them sorted by time so we know which guard was where
         $activeGuard = '';
         return $events->map(function ($event) use (&$activeGuard) {
-            $guard = [];
-            preg_match('/Guard #(\d+)/', $event['action'], $guard);
-            if (isset($guard[1])) {
-                $activeGuard = $guard[1];
-            }
+            $activeGuard = RegexUtility::firstMatch('/Guard #(\d+)/', $event['action']) ?? $activeGuard;
             if (Str::contains($event['action'], 'falls')) {
                 $action = 'sleep';
             }elseif (Str::contains($event['action'], 'wakes')) {

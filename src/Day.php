@@ -3,6 +3,7 @@
 namespace Jtgrimes\Advent;
 
 use Illuminate\Support\Collection;
+use Jtgrimes\Advent\Support\RegexUtility;
 
 abstract class Day
 {
@@ -23,10 +24,7 @@ abstract class Day
 
     private function getMatchFromClassName($regex)
     {
-        $matches = [];
-        if (preg_match($regex, static::class, $matches)) {
-            return $matches[1];
-        }
+        return RegexUtility::firstMatch($regex, static::class);
     }
 
     public function getInputAsString()
