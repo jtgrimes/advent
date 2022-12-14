@@ -27,6 +27,11 @@ abstract class Day
         return RegexUtility::firstMatch($regex, static::class);
     }
 
+    private function inputFileName()
+    {
+        return $this->inputDir."{$this->getYear()}/day{$this->getDay()}";
+    }
+
     public function getInputAsString()
     {
         return trim(file_get_contents($this->inputFileName()));
@@ -74,11 +79,6 @@ abstract class Day
             }
         }
         return $grid;
-    }
-
-    private function inputFileName()
-    {
-        return $this->inputDir."{$this->getYear()}/day{$this->getDay()}";
     }
 
     public abstract function part1();

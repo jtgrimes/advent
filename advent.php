@@ -17,7 +17,7 @@ if (isset($argc)) {
         $part = $argv[3] ?? '1';
 
         echo "Year: $year, Day: $day, Part: $part".PHP_EOL;
-        echo (run($year, $day, $part));
+        echo (run($year, $day, $part).PHP_EOL);
     }
 } else {
     echo "invalid args\n";
