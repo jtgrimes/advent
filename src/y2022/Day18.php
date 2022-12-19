@@ -6,13 +6,12 @@ use Illuminate\Support\Collection;
 
 class Day18 extends \Jtgrimes\Advent\Day
 {
-    private $blocks;
     public $part1Solution = '3364';
 
     public function part1()
     {
-        $this->blocks = $this->getBlocks();
-        return $this->countExposedFaces();
+        $blocks = $this->getBlocks();
+        return $this->countExposedFaces($blocks);
     }
 
     public function part2()
@@ -22,41 +21,31 @@ class Day18 extends \Jtgrimes\Advent\Day
 
     private function getBlocks()
     {
-        return $this->getInputAsCollectionOfLines()->map(function ($line) {
+        $blocks = [];
+        $this->getInputAsCollectionOfLines()->each(function ($line) use (&$blocks){
             list($x, $y, $z) = explode(',', trim($line));
-            return (object)['x' => (int)$x, 'y' => (int)$y, 'z' => (int)$z];
+            $blocks[(int)$x][(int)$y][(int)$z] = 'X';
         });
+        return $blocks;
     }
-    private function countExposedFaces()
+    private function countExposedFaces($blocks)
     {
-        return $this->blocks->reduce(function ($visible, $block, $i) {
-            $seeTop = (int)$this->blocks->where('x', $block->x)
-                ->where('y', $block->y)
-                ->where('z', $block->z + 1)
-                ->isEmpty();
-            $seeBottom = (int)$this->blocks->where('x', $block->x)
-                ->where('y', $block->y)
-                ->where('z', $block->z - 1)
-                ->isEmpty();
-            $seeNorth = (int)$this->blocks->where('x', $block->x)
-                ->where('y', $block->y + 1)
-                ->where('z', $block->z)
-                ->isEmpty();
-            $seeSouth = (int)$this->blocks->where('x', $block->x)
-                ->where('y', $block->y - 1)
-                ->where('z', $block->z)
-                ->isEmpty();
-            $seeEast = (int)$this->blocks->where('x', $block->x+1)
-                ->where('y', $block->y)
-                ->where('z', $block->z)
-                ->isEmpty();
-            $seeWest = (int)$this->blocks->where('x', $block->x-1)
-                ->where('y', $block->y)
-                ->where('z', $block->z)
-                ->isEmpty();
-            echo ("Block $i: $seeTop, $seeBottom,  $seeNorth,  $seeSouth,  $seeWest,  $seeEast\n");
-            return $visible + $seeTop + $seeBottom + $seeNorth + $seeSouth + $seeWest + $seeEast;
-        });
+        $count = 0;
+        foreach ($blocks as $i => $x) {
+            foreach ($x as $j => $y) {
+                foreach ($y as $k => $z) {
+                    $seeTop = (int)!isset($blocks[$i][$j][$k+1]);
+                    $seeBottom = (int)!isset($blocks[$i][$j][$k-1]);
+                    $seeNorth = (int)!isset($blocks[$i][$j+1][$k]);
+                    $seeSouth = (int)!isset($blocks[$i][$j-1][$k]);
+                    $seeEast = (int)!isset($blocks[$i+1][$j][$k]);
+                    $seeWest = (int)!isset($blocks[$i-1][$j][$k]);
+                    echo ("Block $i,$j,$k: $seeTop, $seeBottom,  $seeNorth,  $seeSouth,  $seeWest,  $seeEast\n");
+                    $count += $seeTop + $seeBottom + $seeNorth + $seeSouth + $seeWest + $seeEast;
+                }
+            }
+        }
+        return $count;
     }
-    
+
 }
