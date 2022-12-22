@@ -2,11 +2,14 @@
 
 namespace Jtgrimes\Advent\y2022;
 
+use Illuminate\Support\Str;
 use Jtgrimes\Advent\Support\Calculator;
+use Jtgrimes\Advent\Support\RegexUtility;
 
 class Day21 extends \Jtgrimes\Advent\Day
 {
     public $part1Solution = '194058098264286';
+    public $part2Solution = '3592056845086';
     public function part1()
     {
         $monkeys = $this->buildMonkeys();
@@ -19,28 +22,19 @@ class Day21 extends \Jtgrimes\Advent\Day
 
     public function part2()
     {
-
-        $humn = 23000;
-        while (1) {
-            $monkeys = $this->buildMonkeys();
-            $root = $monkeys->get('root');
-            $root['operation'] = '=';
-            $monkeys['root'] = $root;
-
-            if ($humn % 1000 == 0 ) {
-                echo "Human: $humn\n";
-            }
-            $human = $monkeys->get('humn');
-            $human['value'] = $humn;
-            $monkeys['humn'] = $human;
-            while (! array_key_exists('value', $monkeys->get('root'))) {
-                $monkeys = $this->iterateMonkeys($monkeys);
-            }
-            if ($monkeys->get('root')['value']) {
-                return $humn;
-            }
-            $humn++;
+        $monkeys = $this->buildMonkeys();
+        $root = $monkeys->get('root');
+        $root['operation'] = '=';
+        $monkeys['root'] = $root;
+        $equation = "#root#";
+        while (Str::contains($equation, '#')) {
+           $equation = $this->replaceEquation($equation, $monkeys);
+           $equation = Str::replace('#humn#', 'HUMN', $equation);
         }
+        $tidy = $this->tidyEquation($equation);
+        echo("$tidy\n");
+        // this is as simplified as I can get it using simple techniques
+        // ... solved from here by brute force
     }
 
     private function buildMonkeys()
@@ -71,5 +65,37 @@ class Day21 extends \Jtgrimes\Advent\Day
             }
             return [$id => $monkey];
         });
+    }
+
+    private function replaceEquation(mixed $equation, $monkeys)
+    {
+        $match = RegexUtility::firstMatch('/#(\w+)#/', $equation);
+        $node = $monkeys->get($match);
+        return $this->substitute($equation, $match, $node);
+    }
+
+    private function substitute($equation, $nodeID, $node)
+    {
+        if (array_key_exists('value', $node)) {
+            return Str::replace('#'.$nodeID.'#', $node['value'], $equation);
+        }
+        $new = "(#".$node['first']."# ".$node['operation']." #".$node['second']."#)";
+        return Str::replace('#'.$nodeID.'#', $new, $equation);
+    }
+
+    private function tidyEquation(string $equation)
+    {
+        $done = false;
+        while (!$done) {
+            $cleanThis = RegexUtility::firstMatch('/(\(-?\d+ . -?\d+\))/', $equation);
+            if ($cleanThis) {
+                list($first, $operation, $second) = explode(' ', $cleanThis);
+                $value = Calculator::calculate((int)Str::remove('(',$first), (int)Str::remove(')',$second), $operation);
+                $equation = Str::replace($cleanThis, $value, $equation);
+            } else {
+                $done = true;
+            }
+        }
+        return $equation;
     }
 }
