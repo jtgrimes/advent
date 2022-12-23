@@ -4,6 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
+set_error_handler('errHandle');
 if (isset($argc)) {
     if ($argv[1] == 'todo') {
         todo();
@@ -21,6 +22,15 @@ if (isset($argc)) {
     }
 } else {
     echo "invalid args\n";
+}
+
+function errHandle($errNo, $errStr, $errFile, $errLine) {
+    $msg = "$errStr in $errFile on line $errLine";
+    if ($errNo == E_NOTICE || $errNo == E_WARNING) {
+        throw new ErrorException($msg, $errNo);
+    } else {
+        echo $msg;
+    }
 }
 
 function className($year, $day)

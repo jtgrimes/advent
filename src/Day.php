@@ -27,7 +27,7 @@ abstract class Day
         return RegexUtility::firstMatch($regex, static::class);
     }
 
-    private function inputFileName()
+    protected function inputFileName()
     {
         return $this->inputDir."{$this->getYear()}/day{$this->getDay()}";
     }
